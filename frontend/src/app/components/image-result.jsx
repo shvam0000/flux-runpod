@@ -28,7 +28,7 @@ const ImageResult = ({ jobId }) => {
         console.error('Polling failed:', err);
         clearInterval(interval);
       }
-    }, 30000); // Poll every 30 sec
+    }, 3000); // Poll every 3 sec
 
     return () => clearInterval(interval);
   }, [jobId]);
