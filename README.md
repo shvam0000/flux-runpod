@@ -117,3 +117,11 @@ Run the backend locally
 ```
 $ npm run start
 ```
+
+## Tech Stack
+
+1. Next.js with JavaScript (Frontend)
+2. Node.js / Express.js with JavaScript (Backend)
+3. MongoDB (Persistence Storage for Gallery)
+4. Hugging Face (for text-to-image model)
+5. RunPod (to run the inference)
