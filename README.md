@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
 ```
 
-### 🧪 Testing the Handler
+### Testing the Handler
 
 ```sh
 curl --location 'http://localhost:8080/generate' \
@@ -125,3 +125,5 @@ $ npm run start
 3. MongoDB (Persistence Storage for Gallery)
 4. Hugging Face (for text-to-image model)
 5. RunPod (to run the inference)
+
+> Note: Make sure to update the environment variables when running the project locally
