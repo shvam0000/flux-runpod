@@ -6,14 +6,12 @@ import ImageResult from './components/image-result';
 import Gallery from './components/gallery';
 
 export default function Home() {
-  const [messages, setMessages] = useState([]);
+  const [currentPrompt, setCurrentPrompt] = useState(null);
+  const [currentJobId, setCurrentJobId] = useState(null);
 
   const handleNewJob = (prompt, jobId) => {
-    setMessages((prev) => [
-      ...prev,
-      { type: 'user', prompt },
-      { type: 'image', jobId },
-    ]);
+    setCurrentPrompt(prompt);
+    setCurrentJobId(jobId);
   };
 
   return (
@@ -29,17 +27,12 @@ export default function Home() {
       </div>
 
       <div>
-        {messages.map((msg, idx) =>
-          msg.type === 'user' ? (
-            <div key={idx} className="flex justify-center">
-              <div className="text-neutral-100">{msg.prompt}</div>
-            </div>
-          ) : (
-            <div key={idx}>
-              <ImageResult jobId={msg.jobId} />
-            </div>
-          )
+        {currentPrompt && (
+          <div className="flex justify-center">
+            <div className="text-neutral-100">{currentPrompt}</div>
+          </div>
         )}
+        {currentJobId && <ImageResult jobId={currentJobId} />}
       </div>
 
       <Gallery />

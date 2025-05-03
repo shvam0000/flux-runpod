@@ -7,6 +7,9 @@ const ImageResult = ({ jobId }) => {
   const [image, setImage] = useState(null);
 
   useEffect(() => {
+    setStatus('PENDING');
+    setImage(null);
+
     const interval = setInterval(async () => {
       try {
         const res = await fetch(
@@ -34,13 +37,11 @@ const ImageResult = ({ jobId }) => {
     <div className="my-lg">
       <div className="w-full mx-auto max-w-[500px] flex justify-center">
         {status === 'COMPLETED' && image ? (
-          <>
-            <img
-              src={`data:image/png;base64,${image}`}
-              alt="Generated"
-              className="h-full w-full rounded-xl"
-            />
-          </>
+          <img
+            src={`data:image/png;base64,${image}`}
+            alt="Generated"
+            className="h-full w-full rounded-xl"
+          />
         ) : (
           <div className="w-[500px] h-[500px] bg-[#6B3FEC] animate-pulse rounded-lg" />
         )}
