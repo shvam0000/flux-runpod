@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import PromptForm from './components/prompt-form';
 import ImageResult from './components/image-result';
+import Gallery from './components/gallery';
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
@@ -16,26 +17,32 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col h-screen bg-gray-100">
-      <div className="flex-1 overflow-y-auto p-4 space-y-6">
+    <div className="p-xl text-[#6B3FEC] font-bold text-heading-md text-white bg-gradient-to-br from-neutral-1000 via-[#0C0030] to-[#4F29BC] min-h-screen">
+      <div>RunPod Gen</div>
+      <div className="text-neutral-100 py-md">
+        Let's create a masterpiece together! Just type in a prompt and watch the
+        magic happen.
+      </div>
+
+      <div className="p-4 sticky bottom-0 bg-white shadow-md">
+        <PromptForm onSubmit={handleNewJob} />
+      </div>
+
+      <div>
         {messages.map((msg, idx) =>
           msg.type === 'user' ? (
-            <div key={idx} className="text-right">
-              <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-lg max-w-md">
-                {msg.prompt}
-              </div>
+            <div key={idx} className="flex justify-center">
+              <div className="text-neutral-100">{msg.prompt}</div>
             </div>
           ) : (
-            <div key={idx} className="text-left">
+            <div key={idx}>
               <ImageResult jobId={msg.jobId} />
             </div>
           )
         )}
       </div>
 
-      <div className="border-t p-4 sticky bottom-0 bg-white shadow-md">
-        <PromptForm onSubmit={handleNewJob} />
-      </div>
-    </main>
+      <Gallery />
+    </div>
   );
 }

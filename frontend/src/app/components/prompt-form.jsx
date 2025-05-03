@@ -28,18 +28,18 @@ export default function PromptForm({ onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleGenerate} className="flex gap-2 text-black">
+    <form onSubmit={handleGenerate} className="flex gap-2 text-neutral-100">
       <input
         type="text"
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
-        placeholder="Send a prompt..."
-        className="border rounded px-4 py-2 w-full"
+        placeholder="Unleash your imagination"
+        className="border border-grayscale-500 rounded-md px-4 py-2 w-full"
       />
       <button
         type="submit"
         disabled={loading}
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700">
         {loading ? '...' : 'Send'}
       </button>
     </form>

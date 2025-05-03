@@ -10,6 +10,7 @@ app.use(express.json());
 connectDB().then(() => {
   app.use('/generate', require('./routes/generate'));
   app.use('/status', require('./routes/status'));
+  app.use('/gallery', require('./routes/gallery'));
 
   const PORT = process.env.PORT || 8080;
   app.listen(PORT, () => {
