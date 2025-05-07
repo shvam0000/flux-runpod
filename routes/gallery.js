@@ -7,9 +7,15 @@ router.get('/', async (req, res) => {
   try {
     const collection = getCollection();
     const results = await collection
-      .find({ 'image.image': { $exists: true } })
-      .sort({ completedAt: -1 })
-      .limit(30)
+      .aggregate(
+        [
+          { $match: { 'image.image': { $exists: true } } },
+          { $sort: { completedAt: -1 } },
+          { $limit: 30 },
+          { $project: { 'prompt': 1, 'image.image': 1 } }, // return only required fields
+        ],
+        { allowDiskUse: true }
+      )
       .toArray();
 
     const images = results.map((doc) => ({
